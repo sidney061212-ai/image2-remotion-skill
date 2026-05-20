@@ -8,7 +8,7 @@ import {
   DEFAULT_RENDER,
   DEFAULT_THEME
 } from './defaults';
-import {assertRenderablePreset} from '../presets';
+import {assertRenderablePreset, getPresetDefinition} from '../presets';
 import {selectPreset} from './selectPreset';
 import type {MultiImageMotionRequest, NormalizedMultiImageMotionRequest} from './schema';
 import {validateRequest} from './validateRequest';
@@ -39,6 +39,13 @@ export const normalizeRequest = (
         imageHoldSeconds
       }
     });
+  const presetDefinition = getPresetDefinition(preset);
+  if (presetDefinition.useCase !== useCase) {
+    throw new Error(
+      `Preset '${preset}' is not valid for useCase '${useCase}'. Expected a '${useCase}' preset.`
+    );
+  }
+
   assertRenderablePreset(preset);
 
   const finalComposition =

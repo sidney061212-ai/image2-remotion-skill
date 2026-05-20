@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest';
 import {normalizeRequest} from '../src/skill/normalizeRequest';
 import type {MultiImageMotionRequest} from '../src/skill/schema';
+import {OUTRO_NO_RENDERABLE_PRESETS_ERROR} from '../src/skill/selectPreset';
 
 const baseRequest = (): MultiImageMotionRequest => ({
   version: '1.0',
@@ -74,5 +75,33 @@ describe('normalizeRequest', () => {
     expect(() => normalizeRequest(request)).toThrow(
       "Preset 'rotary-fan-intro' is a preset contract placeholder in v1 and cannot be rendered yet."
     );
+  });
+
+  test('useCase outro without explicit preset throws and must not select orbit-ring-intro', () => {
+    const request = baseRequest();
+    request.motion.useCase = 'outro';
+    request.motion.preset = undefined;
+
+    expect(() => normalizeRequest(request)).toThrow(OUTRO_NO_RENDERABLE_PRESETS_ERROR);
+  });
+
+  test('explicit mismatched preset/useCase should throw', () => {
+    const request = baseRequest();
+    request.motion.useCase = 'intro';
+    request.motion.preset = 'helix-tunnel';
+
+    expect(() => normalizeRequest(request)).toThrow(
+      "Preset 'helix-tunnel' is not valid for useCase 'intro'. Expected a 'intro' preset."
+    );
+  });
+
+  test('explicit matching implemented preset should pass', () => {
+    const request = baseRequest();
+    request.motion.useCase = 'showcase';
+    request.motion.preset = 'gallery-corridor';
+    request.assets = Array.from({length: 10}, (_, index) => ({path: `/sample/image-${index + 1}.jpg`}));
+
+    const normalized = normalizeRequest(request);
+    expect(normalized.motion.preset).toBe('gallery-corridor');
   });
 });

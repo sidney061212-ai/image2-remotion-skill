@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest';
 import type {MultiImageMotionRequest} from '../src/skill/schema';
-import {selectPreset} from '../src/skill/selectPreset';
+import {OUTRO_NO_RENDERABLE_PRESETS_ERROR, selectPreset} from '../src/skill/selectPreset';
 import {getPresetDefinition} from '../src/presets';
 
 const makeRequest = (): MultiImageMotionRequest => ({
@@ -76,5 +76,13 @@ describe('selectPreset', () => {
     const selected = selectPreset(request);
 
     expect(getPresetDefinition(selected).implementationStatus).toBe('implemented');
+  });
+
+  test('outro without explicit preset throws and does not auto-fallback', () => {
+    const request = makeRequest();
+    request.motion.useCase = 'outro';
+    request.motion.preset = undefined;
+
+    expect(() => selectPreset(request)).toThrow(OUTRO_NO_RENDERABLE_PRESETS_ERROR);
   });
 });
