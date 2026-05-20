@@ -8,8 +8,8 @@
 - [ ] No slideshow fallback
 - [ ] All presets have motionSpec
 - [ ] All presets have acceptanceCriteria
-- [ ] Registry contains exactly 8 v1 presets
-- [ ] Implemented presets are exactly 3 in v1
+- [ ] Registry contains exactly 18 presets
+- [ ] Implemented presets are exactly 13
 - [ ] Placeholder presets are marked non-renderable
 - [ ] Normalization is deterministic
 - [ ] Tests pass
@@ -20,6 +20,16 @@
 - [ ] orbit-ring-intro has 3D ring structure
 - [ ] gallery-corridor has corridor depth
 - [ ] helix-tunnel has helix spatial path
+- [ ] corner-deck-pull has top-right stack pull choreography
+- [ ] left-rail-preview-focus keeps static rail plus promoted hero image
+- [ ] split-panel-compare keeps dual panel comparison rhythm
+- [ ] museum-wall-walk has horizontal wall traversal
+- [ ] stage-center-spotlight has center-dominant staging
+- [ ] accordion-fold-gallery has fold-based depth behavior
+- [ ] depth-lane-runway has multi-lane pass-through depth
+- [ ] floating-grid-breathe has layered breathing grid
+- [ ] book-spread-premium has current/next page staging
+- [ ] helix-slow-to-fast has variable speed helix acceleration
 
 ## Docs
 - [ ] README explains boundaries

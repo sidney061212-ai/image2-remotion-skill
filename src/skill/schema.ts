@@ -10,7 +10,17 @@ export const MULTI_IMAGE_MOTION_PRESETS = [
   'gallery-corridor',
   'coverflow-focus',
   'page-flip-gallery',
-  'helix-tunnel'
+  'helix-tunnel',
+  'corner-deck-pull',
+  'left-rail-preview-focus',
+  'split-panel-compare',
+  'museum-wall-walk',
+  'stage-center-spotlight',
+  'accordion-fold-gallery',
+  'depth-lane-runway',
+  'floating-grid-breathe',
+  'book-spread-premium',
+  'helix-slow-to-fast'
 ] as const;
 
 export type MultiImageMotionPreset = (typeof MULTI_IMAGE_MOTION_PRESETS)[number];

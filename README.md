@@ -6,7 +6,6 @@ An AI-facing Remotion skill for generating creative **multi-image** motion compo
 - Takes 2+ images and a motion preset (or auto-select rules).
 - Produces a designed video sequence with spatial structure, camera motion, staged choreography, and final composition convergence.
 - Uses deterministic defaults and deterministic seed behavior for predictable AI orchestration.
-- v1 runtime availability is intentionally limited to 3 implemented presets.
 - Background is intentionally constrained to only `black` or `transparent`.
 
 ## What this skill does not do
@@ -52,6 +51,16 @@ npm run build
 npm run render:orbit
 npm run render:corridor
 npm run render:helix
+npm run render:corner-deck
+npm run render:left-rail
+npm run render:split-panel
+npm run render:museum-wall
+npm run render:stage-spotlight
+npm run render:accordion
+npm run render:depth-runway
+npm run render:floating-grid
+npm run render:book-spread
+npm run render:helix-slow-fast
 ```
 
 Notes:
@@ -65,6 +74,16 @@ Notes:
 - `examples/request-helix-tunnel.json`
 - `examples/request-invalid-single-image.json`
 - `examples/request-auto-select.json`
+- `examples/request-corner-deck-pull.json`
+- `examples/request-left-rail-preview-focus.json`
+- `examples/request-split-panel-compare.json`
+- `examples/request-museum-wall-walk.json`
+- `examples/request-stage-center-spotlight.json`
+- `examples/request-accordion-fold-gallery.json`
+- `examples/request-depth-lane-runway.json`
+- `examples/request-floating-grid-breathe.json`
+- `examples/request-book-spread-premium.json`
+- `examples/request-helix-slow-to-fast.json`
 
 ## Preset List (v1)
 - `orbit-ring-intro`
@@ -75,12 +94,32 @@ Notes:
 - `coverflow-focus`
 - `page-flip-gallery`
 - `helix-tunnel`
+- `corner-deck-pull`
+- `left-rail-preview-focus`
+- `split-panel-compare`
+- `museum-wall-walk`
+- `stage-center-spotlight`
+- `accordion-fold-gallery`
+- `depth-lane-runway`
+- `floating-grid-breathe`
+- `book-spread-premium`
+- `helix-slow-to-fast`
 
 ## Implemented Presets
-These are the only presets that are renderable in v1:
+Renderable presets:
 - `orbit-ring-intro`
 - `gallery-corridor`
 - `helix-tunnel`
+- `corner-deck-pull`
+- `left-rail-preview-focus`
+- `split-panel-compare`
+- `museum-wall-walk`
+- `stage-center-spotlight`
+- `accordion-fold-gallery`
+- `depth-lane-runway`
+- `floating-grid-breathe`
+- `book-spread-premium`
+- `helix-slow-to-fast`
 
 ## Placeholder Presets
 These are preset-contract placeholders in v1 and are intentionally **not renderable**:
@@ -96,6 +135,19 @@ If an explicit placeholder preset is requested, the skill returns a clear error 
 ```bash
 npm run test
 ```
+
+## Desktop Preview Frames
+Preview frames generated from real desktop images are included for review:
+- `previews/desktop-real/corner-deck-pull.png`
+- `previews/desktop-real/left-rail-preview-focus.png`
+- `previews/desktop-real/split-panel-compare.png`
+- `previews/desktop-real/museum-wall-walk.png`
+- `previews/desktop-real/stage-center-spotlight.png`
+- `previews/desktop-real/accordion-fold-gallery.png`
+- `previews/desktop-real/depth-lane-runway.png`
+- `previews/desktop-real/floating-grid-breathe.png`
+- `previews/desktop-real/book-spread-premium.png`
+- `previews/desktop-real/helix-slow-to-fast.png`
 
 ## AI Usage
 1. Validate request.

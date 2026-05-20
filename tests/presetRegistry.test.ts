@@ -2,8 +2,8 @@ import {describe, expect, test} from 'vitest';
 import {getPresetDefinition, presetRegistry} from '../src/presets';
 
 describe('presetRegistry', () => {
-  test('registry has 8 presets', () => {
-    expect(Object.keys(presetRegistry)).toHaveLength(8);
+  test('registry has 18 presets', () => {
+    expect(Object.keys(presetRegistry)).toHaveLength(18);
   });
 
   test('each preset has motionSpec', () => {
@@ -29,15 +29,29 @@ describe('presetRegistry', () => {
       .map((preset) => preset.id)
       .sort();
 
-    expect(implemented).toEqual(['gallery-corridor', 'helix-tunnel', 'orbit-ring-intro']);
+    expect(implemented).toEqual([
+      'accordion-fold-gallery',
+      'book-spread-premium',
+      'corner-deck-pull',
+      'depth-lane-runway',
+      'floating-grid-breathe',
+      'gallery-corridor',
+      'helix-slow-to-fast',
+      'helix-tunnel',
+      'left-rail-preview-focus',
+      'museum-wall-walk',
+      'orbit-ring-intro',
+      'split-panel-compare',
+      'stage-center-spotlight'
+    ]);
   });
 
-  test('implemented presets are exactly 3', () => {
+  test('implemented presets are exactly 13', () => {
     const implementedCount = Object.values(presetRegistry).filter(
       (preset) => preset.implementationStatus === 'implemented'
     ).length;
 
-    expect(implementedCount).toBe(3);
+    expect(implementedCount).toBe(13);
   });
 
   test('placeholder presets are marked placeholder', () => {

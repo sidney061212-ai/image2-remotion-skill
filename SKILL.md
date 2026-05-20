@@ -37,11 +37,21 @@ Output is a deterministic `NormalizedMultiImageMotionRequest` plus a Remotion co
 - resolved preset
 - deterministic seed + debug flags
 - frame-driven multi-image animation only
-- v1 renderable presets are only:
+- currently renderable presets:
   - `orbit-ring-intro`
   - `gallery-corridor`
   - `helix-tunnel`
-- The other 5 presets are contract placeholders and are not renderable in v1.
+  - `corner-deck-pull`
+  - `left-rail-preview-focus`
+  - `split-panel-compare`
+  - `museum-wall-walk`
+  - `stage-center-spotlight`
+  - `accordion-fold-gallery`
+  - `depth-lane-runway`
+  - `floating-grid-breathe`
+  - `book-spread-premium`
+  - `helix-slow-to-fast`
+- The legacy 5 presets remain contract placeholders and are not renderable.
 - Theme background is constrained to `black` or `transparent`.
 
 ## Preset selection rules
@@ -89,6 +99,16 @@ Output is a deterministic `NormalizedMultiImageMotionRequest` plus a Remotion co
 - `examples/request-helix-tunnel.json`
 - `examples/request-invalid-single-image.json`
 - `examples/request-auto-select.json`
+- `examples/request-corner-deck-pull.json`
+- `examples/request-left-rail-preview-focus.json`
+- `examples/request-split-panel-compare.json`
+- `examples/request-museum-wall-walk.json`
+- `examples/request-stage-center-spotlight.json`
+- `examples/request-accordion-fold-gallery.json`
+- `examples/request-depth-lane-runway.json`
+- `examples/request-floating-grid-breathe.json`
+- `examples/request-book-spread-premium.json`
+- `examples/request-helix-slow-to-fast.json`
 
 ## Acceptance checklist
 - Validate with `docs/acceptance-checklist.md` before claiming completion.

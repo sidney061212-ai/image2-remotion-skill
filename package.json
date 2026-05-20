@@ -11,7 +11,17 @@
     "test:watch": "vitest",
     "render:orbit": "remotion render src/index.ts Image2RemotionSkill out/orbit-ring.mp4 --props=examples/request-orbit-ring.json",
     "render:corridor": "remotion render src/index.ts Image2RemotionSkill out/gallery-corridor.mp4 --props=examples/request-gallery-corridor.json",
-    "render:helix": "remotion render src/index.ts Image2RemotionSkill out/helix-tunnel.mp4 --props=examples/request-helix-tunnel.json"
+    "render:helix": "remotion render src/index.ts Image2RemotionSkill out/helix-tunnel.mp4 --props=examples/request-helix-tunnel.json",
+    "render:corner-deck": "remotion render src/index.ts Image2RemotionSkill out/corner-deck-pull.mp4 --props=examples/request-corner-deck-pull.json",
+    "render:left-rail": "remotion render src/index.ts Image2RemotionSkill out/left-rail-preview-focus.mp4 --props=examples/request-left-rail-preview-focus.json",
+    "render:split-panel": "remotion render src/index.ts Image2RemotionSkill out/split-panel-compare.mp4 --props=examples/request-split-panel-compare.json",
+    "render:museum-wall": "remotion render src/index.ts Image2RemotionSkill out/museum-wall-walk.mp4 --props=examples/request-museum-wall-walk.json",
+    "render:stage-spotlight": "remotion render src/index.ts Image2RemotionSkill out/stage-center-spotlight.mp4 --props=examples/request-stage-center-spotlight.json",
+    "render:accordion": "remotion render src/index.ts Image2RemotionSkill out/accordion-fold-gallery.mp4 --props=examples/request-accordion-fold-gallery.json",
+    "render:depth-runway": "remotion render src/index.ts Image2RemotionSkill out/depth-lane-runway.mp4 --props=examples/request-depth-lane-runway.json",
+    "render:floating-grid": "remotion render src/index.ts Image2RemotionSkill out/floating-grid-breathe.mp4 --props=examples/request-floating-grid-breathe.json",
+    "render:book-spread": "remotion render src/index.ts Image2RemotionSkill out/book-spread-premium.mp4 --props=examples/request-book-spread-premium.json",
+    "render:helix-slow-fast": "remotion render src/index.ts Image2RemotionSkill out/helix-slow-to-fast.mp4 --props=examples/request-helix-slow-to-fast.json"
   },
   "keywords": [
     "remotion",

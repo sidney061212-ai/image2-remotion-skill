@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "assets": [
+    {"path": "/sample/image-01.jpg"},
+    {"path": "/sample/image-02.jpg"},
+    {"path": "/sample/image-03.jpg"},
+    {"path": "/sample/image-04.jpg"},
+    {"path": "/sample/image-05.jpg"},
+    {"path": "/sample/image-06.jpg"},
+    {"path": "/sample/image-07.jpg"},
+    {"path": "/sample/image-08.jpg"}
+  ],
+  "output": {
+    "aspectRatio": "16:9",
+    "durationSeconds": 18
+  },
+  "motion": {
+    "useCase": "showcase",
+    "preset": "accordion-fold-gallery",
+    "imageHoldSeconds": 4,
+    "finalComposition": "stack"
+  }
+}
