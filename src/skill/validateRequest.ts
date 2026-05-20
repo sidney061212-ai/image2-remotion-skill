@@ -3,6 +3,7 @@ import {
   isFinalComposition,
   isIntensity,
   isPreset,
+  isThemeBackground,
   isUseCase,
   type MultiImageMotionRequest
 } from './schema';
@@ -79,6 +80,15 @@ export const validateRequest = (request: MultiImageMotionRequest): void => {
 
   if (request.motion.finalComposition && !isFinalComposition(request.motion.finalComposition)) {
     throw new Error(`Invalid finalComposition '${request.motion.finalComposition}'.`);
+  }
+
+  if (
+    typeof request.theme?.background !== 'undefined' &&
+    !isThemeBackground(request.theme.background)
+  ) {
+    throw new Error(
+      `Invalid theme.background '${request.theme.background}'. Allowed values: black, transparent.`
+    );
   }
 
   if (typeof request.output.durationSeconds !== 'undefined') {

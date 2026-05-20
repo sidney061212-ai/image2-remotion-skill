@@ -145,21 +145,6 @@ export const GalleryCorridor: React.FC<MultiImagePresetProps> = ({
         }}
       />
 
-      <div
-        style={{
-          position: 'absolute',
-          left: 60,
-          bottom: 52,
-          color: '#f8fafc',
-          opacity: 1 - finalProgress
-        }}
-      >
-        <div style={{fontSize: Math.round(width * 0.031), fontWeight: 760}}>{text?.title ?? 'Gallery Corridor'}</div>
-        <div style={{fontSize: Math.round(width * 0.015), marginTop: 8, opacity: 0.86}}>
-          Deep corridor camera pass with focal highlights and subtle atmospheric fog.
-        </div>
-      </div>
-
       <FinalComposition
         assets={assets}
         mode={finalComposition}

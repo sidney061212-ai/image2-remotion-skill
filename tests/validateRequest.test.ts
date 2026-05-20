@@ -62,4 +62,20 @@ describe('validateRequest', () => {
     expect(BOUNDARY_DECLARATIONS).toContain('Do not perform OCR.');
     expect(BOUNDARY_DECLARATIONS).toContain('Do not classify image content.');
   });
+
+  test('theme background allows black and transparent only', () => {
+    const black = makeValidRequest();
+    black.theme = {background: 'black'};
+    expect(() => validateRequest(black)).not.toThrow();
+
+    const transparent = makeValidRequest();
+    transparent.theme = {background: 'transparent'};
+    expect(() => validateRequest(transparent)).not.toThrow();
+
+    const invalid = makeValidRequest();
+    invalid.theme = {background: 'dark-gradient' as never};
+    expect(() => validateRequest(invalid)).toThrow(
+      "Invalid theme.background 'dark-gradient'. Allowed values: black, transparent."
+    );
+  });
 });

@@ -141,22 +141,6 @@ export const HelixTunnel: React.FC<MultiImagePresetProps> = ({
         }}
       />
 
-      <div
-        style={{
-          position: 'absolute',
-          right: 48,
-          top: 42,
-          color: '#f8fafc',
-          textAlign: 'right',
-          opacity: 1 - finalProgress
-        }}
-      >
-        <div style={{fontSize: Math.round(width * 0.032), fontWeight: 760}}>{text?.title ?? 'Helix Tunnel'}</div>
-        <div style={{fontSize: Math.round(width * 0.015), marginTop: 8, opacity: 0.82}}>
-          High-speed helix tunnel traversal with depth-driven blur and convergence.
-        </div>
-      </div>
-
       <FinalComposition
         assets={assets}
         mode={finalComposition}

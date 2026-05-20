@@ -17,10 +17,6 @@
     "preset": "orbit-ring-intro",
     "finalComposition": "title-center"
   },
-  "text": {
-    "title": "Creative Memories",
-    "subtitle": "Moments in motion"
-  },
   "render": {
     "seed": 7,
     "debug": false

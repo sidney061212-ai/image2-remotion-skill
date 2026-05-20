@@ -24,9 +24,6 @@
     "intensity": "high",
     "finalComposition": "orbit"
   },
-  "text": {
-    "title": "Beyond The Frame"
-  },
   "render": {
     "seed": 42
   }

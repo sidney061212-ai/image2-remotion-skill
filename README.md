@@ -7,6 +7,7 @@ An AI-facing Remotion skill for generating creative **multi-image** motion compo
 - Produces a designed video sequence with spatial structure, camera motion, staged choreography, and final composition convergence.
 - Uses deterministic defaults and deterministic seed behavior for predictable AI orchestration.
 - v1 runtime availability is intentionally limited to 3 implemented presets.
+- Background is intentionally constrained to only `black` or `transparent`.
 
 ## What this skill does not do
 - OCR or text extraction from images.
@@ -27,12 +28,13 @@ This project intentionally avoids OCR, image classification, infographic parsing
 7. Do not infer whether an image is product/landscape/infographic/portrait/food/document/screenshot/poster.
 8. Do not choose presets from image content.
 9. Do not fallback to static grids/slideshows/shuffle demos.
-10. Every preset must define: spatial structure, entrance choreography, camera path, sequencing, transition, final composition.
-11. Motion must be frame-driven by Remotion primitives.
-12. Output must be deterministic with `seed`.
-13. Preset selection only depends on: useCase, image count, duration, aspectRatio, intensity, explicit preset.
-14. Preset selection must not depend on image visual content.
-15. AI-facing behavior must be schema-first, error-clear, and predictable.
+10. Background options are only `black` and `transparent`.
+11. Every preset must define: spatial structure, entrance choreography, camera path, sequencing, transition, final composition.
+12. Motion must be frame-driven by Remotion primitives.
+13. Output must be deterministic with `seed`.
+14. Preset selection only depends on: useCase, image count, duration, aspectRatio, intensity, explicit preset.
+15. Preset selection must not depend on image visual content.
+16. AI-facing behavior must be schema-first, error-clear, and predictable.
 
 ## Install
 ```bash

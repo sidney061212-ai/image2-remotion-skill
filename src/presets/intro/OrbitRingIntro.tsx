@@ -1,8 +1,7 @@
-import {Easing, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import {Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {FinalComposition} from '../../components/FinalComposition';
 import {MotionImage} from '../../components/MotionImage';
 import {PerspectiveStage} from '../../components/PerspectiveStage';
-import {SafeText} from '../../components/SafeText';
 import {distributeOnCircle} from '../../motion/layout';
 import {phaseProgress} from '../../motion/timeline';
 import type {MultiImagePresetProps} from '../types';
@@ -58,11 +57,6 @@ export const OrbitRingIntro: React.FC<MultiImagePresetProps> = ({
   });
   const ringRotateZ = Math.sin(frame * 0.015) * 1.8;
 
-  const titleReveal = spring({
-    frame: Math.max(0, frame - Math.floor(durationInFrames * 0.68)),
-    fps,
-    config: {damping: 18, mass: 0.84, stiffness: 120}
-  });
   const finalProgress = phaseProgress(frame, finalStart, durationInFrames - 1);
 
   const cardWidth = Math.min(width, height) * 0.25;
@@ -134,46 +128,6 @@ export const OrbitRingIntro: React.FC<MultiImagePresetProps> = ({
             />
           );
         })}
-      </div>
-
-      <div
-        style={{
-          position: 'absolute',
-          left: '50%',
-          top: '50%',
-          transform: `translate(-50%, -50%) scale(${interpolate(titleReveal, [0, 1], [0.88, 1])})`,
-          width: Math.min(width * 0.7, 960),
-          opacity: interpolate(titleReveal, [0, 1], [0, 1])
-        }}
-      >
-        <div
-          style={{
-            margin: '0 auto',
-            width: 'fit-content',
-            maxWidth: '100%',
-            textAlign: 'center',
-            color: '#f8fafc',
-            padding: `${Math.round(height * 0.02)}px ${Math.round(width * 0.024)}px`,
-            borderRadius: 22,
-            border: '1px solid rgba(255,255,255,0.28)',
-            background: 'linear-gradient(145deg, rgba(10,20,38,0.5), rgba(10,20,38,0.18))',
-            backdropFilter: 'blur(8px)',
-            boxShadow: '0 20px 44px rgba(0, 0, 0, 0.36)'
-          }}
-        >
-          <SafeText
-            value={text?.title ?? 'Creative Memories'}
-            style={{fontSize: Math.round(width * 0.06), fontWeight: 760, letterSpacing: 1.3, lineHeight: 1.06}}
-          />
-          <SafeText
-            value={text?.subtitle}
-            style={{fontSize: Math.round(width * 0.023), marginTop: 14, opacity: 0.9, fontWeight: 500}}
-          />
-          <SafeText
-            value={text?.caption}
-            style={{fontSize: Math.round(width * 0.015), marginTop: 10, opacity: 0.76}}
-          />
-        </div>
       </div>
 
       <FinalComposition
