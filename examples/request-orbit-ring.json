@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "assets": [
+    {"path": "/sample/image-01.png"},
+    {"path": "/sample/image-02.png"},
+    {"path": "/sample/image-03.png"},
+    {"path": "/sample/image-04.png"},
+    {"path": "/sample/image-05.png"},
+    {"path": "/sample/image-06.png"}
+  ],
+  "output": {
+    "aspectRatio": "16:9",
+    "durationSeconds": 5
+  },
+  "motion": {
+    "useCase": "intro",
+    "preset": "orbit-ring-intro",
+    "finalComposition": "title-center"
+  },
+  "text": {
+    "title": "Creative Memories",
+    "subtitle": "Moments in motion"
+  },
+  "render": {
+    "seed": 7,
+    "debug": false
+  }
+}

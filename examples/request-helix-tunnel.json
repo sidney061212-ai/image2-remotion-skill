@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "assets": [
+    {"path": "/sample/image-01.png"},
+    {"path": "/sample/image-02.png"},
+    {"path": "/sample/image-03.png"},
+    {"path": "/sample/image-04.png"},
+    {"path": "/sample/image-05.png"},
+    {"path": "/sample/image-06.png"},
+    {"path": "/sample/image-07.png"},
+    {"path": "/sample/image-08.png"},
+    {"path": "/sample/image-09.png"},
+    {"path": "/sample/image-10.png"},
+    {"path": "/sample/image-11.png"},
+    {"path": "/sample/image-12.png"}
+  ],
+  "output": {
+    "aspectRatio": "9:16",
+    "durationSeconds": 8
+  },
+  "motion": {
+    "useCase": "wow",
+    "preset": "helix-tunnel",
+    "intensity": "high",
+    "finalComposition": "orbit"
+  },
+  "text": {
+    "title": "Beyond The Frame"
+  },
+  "render": {
+    "seed": 42
+  }
+}

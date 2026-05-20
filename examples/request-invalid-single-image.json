@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "assets": [
+    {"path": "/sample/image-01.png"}
+  ],
+  "output": {
+    "aspectRatio": "16:9"
+  },
+  "motion": {
+    "useCase": "intro"
+  }
+}
