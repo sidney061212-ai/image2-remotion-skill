@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "assets": [
+    {"path": "/sample/image-01.jpg"},
+    {"path": "/sample/image-02.jpg"},
+    {"path": "/sample/image-03.jpg"},
+    {"path": "/sample/image-04.jpg"},
+    {"path": "/sample/image-05.jpg"}
+  ],
+  "output": {
+    "aspectRatio": "16:9",
+    "durationSeconds": 10
+  },
+  "motion": {
+    "useCase": "intro",
+    "preset": "stage-center-spotlight",
+    "imageHoldSeconds": 3,
+    "finalComposition": "main-focus"
+  }
+}

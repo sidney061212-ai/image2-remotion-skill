@@ -104,4 +104,16 @@ describe('normalizeRequest', () => {
     const normalized = normalizeRequest(request);
     expect(normalized.motion.preset).toBe('gallery-corridor');
   });
+
+  test('explicit newly implemented preset should pass', () => {
+    const request = baseRequest();
+    request.motion.useCase = 'showcase';
+    request.motion.preset = 'corner-deck-pull';
+    request.output.durationSeconds = 12;
+    request.motion.imageHoldSeconds = 5;
+    request.assets = Array.from({length: 6}, (_, index) => ({path: `/sample/image-${index + 1}.jpg`}));
+
+    const normalized = normalizeRequest(request);
+    expect(normalized.motion.preset).toBe('corner-deck-pull');
+  });
 });
