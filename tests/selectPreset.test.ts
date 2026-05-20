@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest';
 import type {MultiImageMotionRequest} from '../src/skill/schema';
 import {selectPreset} from '../src/skill/selectPreset';
+import {getPresetDefinition} from '../src/presets';
 
 const makeRequest = (): MultiImageMotionRequest => ({
   version: '1.0',
@@ -16,10 +17,10 @@ describe('selectPreset', () => {
     expect(selectPreset(request)).toBe('helix-tunnel');
   });
 
-  test('intro <= 6 returns rotary-fan-intro', () => {
+  test('intro <= 6 returns implemented preset', () => {
     const request = makeRequest();
     request.assets = Array.from({length: 6}, (_, i) => ({path: `/sample/${i}.jpg`}));
-    expect(selectPreset(request)).toBe('rotary-fan-intro');
+    expect(selectPreset(request)).toBe('orbit-ring-intro');
   });
 
   test('intro <= 12 returns orbit-ring-intro', () => {
@@ -28,17 +29,17 @@ describe('selectPreset', () => {
     expect(selectPreset(request)).toBe('orbit-ring-intro');
   });
 
-  test('intro > 12 returns magnetic-grid-intro', () => {
+  test('intro > 12 still returns implemented preset', () => {
     const request = makeRequest();
     request.assets = Array.from({length: 13}, (_, i) => ({path: `/sample/${i}.jpg`}));
-    expect(selectPreset(request)).toBe('magnetic-grid-intro');
+    expect(selectPreset(request)).toBe('orbit-ring-intro');
   });
 
-  test('showcase with hold >= 3 returns coverflow-focus', () => {
+  test('showcase with hold >= 3 returns implemented preset', () => {
     const request = makeRequest();
     request.motion.useCase = 'showcase';
     request.motion.imageHoldSeconds = 3;
-    expect(selectPreset(request)).toBe('coverflow-focus');
+    expect(selectPreset(request)).toBe('gallery-corridor');
   });
 
   test('showcase count >= 10 returns gallery-corridor', () => {
@@ -65,5 +66,15 @@ describe('selectPreset', () => {
     b.assets = Array.from({length: 10}, (_, i) => ({path: `/sample/landscape-${i}.jpg`}));
 
     expect(selectPreset(a)).toBe(selectPreset(b));
+  });
+
+  test('auto-select does not return placeholder preset', () => {
+    const request = makeRequest();
+    request.motion.useCase = 'showcase';
+    request.motion.preset = undefined;
+    request.assets = Array.from({length: 3}, (_, i) => ({path: `/sample/${i}.jpg`}));
+    const selected = selectPreset(request);
+
+    expect(getPresetDefinition(selected).implementationStatus).toBe('implemented');
   });
 });

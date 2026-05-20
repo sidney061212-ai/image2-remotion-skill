@@ -1,37 +1,33 @@
 import type {MultiImageMotionPreset, MultiImageMotionRequest} from './schema';
+import {getImplementedPresetIds} from '../presets';
 
 export const selectPreset = (request: MultiImageMotionRequest): MultiImageMotionPreset => {
   if (request.motion.preset) {
     return request.motion.preset;
   }
 
-  const count = request.assets.length;
   const useCase = request.motion.useCase;
-  const hold = request.motion.imageHoldSeconds;
+  const implemented = new Set<MultiImageMotionPreset>(getImplementedPresetIds());
+
+  const pickImplemented = (candidate: MultiImageMotionPreset): MultiImageMotionPreset => {
+    if (implemented.has(candidate)) {
+      return candidate;
+    }
+
+    return 'orbit-ring-intro';
+  };
 
   if (useCase === 'intro') {
-    if (count <= 6) {
-      return 'rotary-fan-intro';
-    }
-    if (count <= 12) {
-      return 'orbit-ring-intro';
-    }
-    return 'magnetic-grid-intro';
+    return pickImplemented('orbit-ring-intro');
   }
 
   if (useCase === 'showcase') {
-    if (hold && hold >= 3) {
-      return 'coverflow-focus';
-    }
-    if (count >= 10) {
-      return 'gallery-corridor';
-    }
-    return 'page-flip-gallery';
+    return pickImplemented('gallery-corridor');
   }
 
   if (useCase === 'wow') {
-    return 'helix-tunnel';
+    return pickImplemented('helix-tunnel');
   }
 
-  return 'magnetic-grid-intro';
+  return pickImplemented('orbit-ring-intro');
 };

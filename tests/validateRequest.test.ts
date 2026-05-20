@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest';
 import type {MultiImageMotionRequest} from '../src/skill/schema';
-import {validateRequest} from '../src/skill/validateRequest';
+import {BOUNDARY_DECLARATIONS, validateRequest} from '../src/skill/validateRequest';
 
 const makeValidRequest = (): MultiImageMotionRequest => ({
   version: '1.0',
@@ -56,5 +56,10 @@ describe('validateRequest', () => {
     request.output.durationSeconds = -1;
 
     expect(() => validateRequest(request)).toThrow('output.durationSeconds must be a positive number.');
+  });
+
+  test('boundary declarations include no OCR and no image understanding', () => {
+    expect(BOUNDARY_DECLARATIONS).toContain('Do not perform OCR.');
+    expect(BOUNDARY_DECLARATIONS).toContain('Do not classify image content.');
   });
 });

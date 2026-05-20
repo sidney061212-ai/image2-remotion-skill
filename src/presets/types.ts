@@ -38,7 +38,8 @@ export interface MultiImagePresetDefinition {
   defaultDurationSeconds: number;
   supportsFinalComposition: FinalComposition[];
   description: string;
-  implementationStatus: 'implemented' | 'placeholder';
+  implementationStatus: 'implemented' | 'placeholder' | 'experimental';
+  isRenderable: boolean;
   motionSpec: {
     spatialStructure: string;
     entranceLogic: string;

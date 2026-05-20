@@ -37,18 +37,25 @@ Output is a deterministic `NormalizedMultiImageMotionRequest` plus a Remotion co
 - resolved preset
 - deterministic seed + debug flags
 - frame-driven multi-image animation only
+- v1 renderable presets are only:
+  - `orbit-ring-intro`
+  - `gallery-corridor`
+  - `helix-tunnel`
+- The other 5 presets are contract placeholders and are not renderable in v1.
 
 ## Preset selection rules
 1. If `motion.preset` is provided, use it directly.
-2. Otherwise select only from metadata:
+2. If explicit preset is placeholder, return a clear non-renderable error.
+3. Auto-select can only return implemented presets.
+4. Otherwise select only from metadata:
    - `useCase`
    - `assets.length`
    - `imageHoldSeconds`
    - `durationSeconds`
    - `aspectRatio`
    - `intensity`
-3. Never inspect image visual content.
-4. Never use OCR or file-name semantics.
+5. Never inspect image visual content.
+6. Never use OCR or file-name semantics.
 
 ## Hard prohibitions
 1. This skill only handles multi-image motion composition.

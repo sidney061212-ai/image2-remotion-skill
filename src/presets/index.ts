@@ -20,6 +20,7 @@ export const presetRegistry: Record<MultiImageMotionPreset, MultiImagePresetDefi
     supportsFinalComposition: ['title-center', 'orbit', 'main-focus'],
     description: '3D orbit ring intro with central title reveal and spatial image choreography.',
     implementationStatus: 'implemented',
+    isRenderable: true,
     motionSpec: {
       spatialStructure: 'Images are distributed on a 3D ring around a reserved center area.',
       entranceLogic: 'Images fly in from deep z-space and then attach to ring anchors in a staggered sequence.',
@@ -47,6 +48,7 @@ export const presetRegistry: Record<MultiImageMotionPreset, MultiImagePresetDefi
     supportsFinalComposition: ['title-center', 'stack', 'main-focus'],
     description: 'Planned intro where cards drop in, flip, and settle into a cinematic arrangement.',
     implementationStatus: 'placeholder',
+    isRenderable: false,
     motionSpec: {
       spatialStructure: 'Layered vertical lanes with depth-separated card anchors.',
       entranceLogic: 'Cards drop from off-screen, flip across X axis, and lock into perspective staging.',
@@ -72,6 +74,7 @@ export const presetRegistry: Record<MultiImageMotionPreset, MultiImagePresetDefi
     supportsFinalComposition: ['title-center', 'orbit', 'stack'],
     description: 'Planned intro where image cards fan out with rotational staging and center emphasis.',
     implementationStatus: 'placeholder',
+    isRenderable: false,
     motionSpec: {
       spatialStructure: 'Cards arranged in an arc fan with depth offsets.',
       entranceLogic: 'Fan opens from compact stack into wide angular spread.',
@@ -97,6 +100,7 @@ export const presetRegistry: Record<MultiImageMotionPreset, MultiImagePresetDefi
     supportsFinalComposition: ['title-center', 'grid', 'main-focus'],
     description: 'Planned intro with magnetized multi-plane grid attraction and kinetic alignment.',
     implementationStatus: 'placeholder',
+    isRenderable: false,
     motionSpec: {
       spatialStructure: 'Multi-plane grid layers with varying z-depth strata.',
       entranceLogic: 'Cards drift in asynchronously then snap to magnetic grid anchors.',
@@ -122,6 +126,7 @@ export const presetRegistry: Record<MultiImageMotionPreset, MultiImagePresetDefi
     supportsFinalComposition: ['main-focus', 'grid', 'orbit', 'title-center'],
     description: '3D corridor showcase with forward camera travel and per-image focus states.',
     implementationStatus: 'implemented',
+    isRenderable: true,
     motionSpec: {
       spatialStructure: 'Left/right wall cards define a deep perspective corridor with z-axis travel.',
       entranceLogic: 'Cards start pre-positioned in corridor depth and are revealed through camera traversal.',
@@ -148,6 +153,7 @@ export const presetRegistry: Record<MultiImageMotionPreset, MultiImagePresetDefi
     supportsFinalComposition: ['main-focus', 'stack', 'title-center'],
     description: 'Planned showcase with coverflow staging and focal transitions.',
     implementationStatus: 'placeholder',
+    isRenderable: false,
     motionSpec: {
       spatialStructure: 'Central focus plane with angled side cards in depth.',
       entranceLogic: 'Cards slide from depth into coverflow lanes.',
@@ -173,6 +179,7 @@ export const presetRegistry: Record<MultiImageMotionPreset, MultiImagePresetDefi
     supportsFinalComposition: ['stack', 'main-focus', 'grid'],
     description: 'Planned showcase with page-turn choreography and layered gallery transitions.',
     implementationStatus: 'placeholder',
+    isRenderable: false,
     motionSpec: {
       spatialStructure: 'Layered page stack with hinge-based flip axis.',
       entranceLogic: 'Pages enter depth stack and flip forward one by one.',
@@ -198,6 +205,7 @@ export const presetRegistry: Record<MultiImageMotionPreset, MultiImagePresetDefi
     supportsFinalComposition: ['orbit', 'grid', 'title-center', 'main-focus'],
     description: 'High-impact helix tunnel fly-through with depth scaling and rotational camera energy.',
     implementationStatus: 'implemented',
+    isRenderable: true,
     motionSpec: {
       spatialStructure: 'Images are distributed along a forward helix tunnel path.',
       entranceLogic: 'Helix is prebuilt and camera rapidly enters tunnel centerline.',
@@ -225,4 +233,31 @@ export const getPresetDefinition = (preset: MultiImageMotionPreset): MultiImageP
   }
 
   return definition;
+};
+
+export const getPresetDefinitionsByStatus = (
+  status: MultiImagePresetDefinition['implementationStatus']
+): MultiImagePresetDefinition[] => {
+  return Object.values(presetRegistry).filter((preset) => preset.implementationStatus === status);
+};
+
+export const getImplementedPresetIds = (): MultiImageMotionPreset[] => {
+  return getPresetDefinitionsByStatus('implemented').map((preset) => preset.id);
+};
+
+export const getRenderablePresetIds = (): MultiImageMotionPreset[] => {
+  return Object.values(presetRegistry)
+    .filter((preset) => preset.isRenderable)
+    .map((preset) => preset.id);
+};
+
+export const assertRenderablePreset = (preset: MultiImageMotionPreset): void => {
+  const definition = getPresetDefinition(preset);
+
+  if (!definition.isRenderable) {
+    const implementedList = getImplementedPresetIds().join(', ');
+    throw new Error(
+      `Preset '${preset}' is a preset contract placeholder in v1 and cannot be rendered yet. Use one of implemented presets: ${implementedList}.`
+    );
+  }
 };

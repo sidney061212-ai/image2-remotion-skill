@@ -7,6 +7,14 @@ import {
   type MultiImageMotionRequest
 } from './schema';
 
+export const BOUNDARY_DECLARATIONS = [
+  'Do not perform OCR.',
+  'Do not scan or extract text from images.',
+  'Do not classify image content.',
+  'Do not infer image semantic category.',
+  'Do not choose presets based on image content.'
+] as const;
+
 /**
  * Hard Rules (must remain true):
  * 1) Only handles multi-image motion composition.

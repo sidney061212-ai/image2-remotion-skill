@@ -9,8 +9,12 @@
 - [ ] All presets have motionSpec
 - [ ] All presets have acceptanceCriteria
 - [ ] Registry contains exactly 8 v1 presets
+- [ ] Implemented presets are exactly 3 in v1
+- [ ] Placeholder presets are marked non-renderable
 - [ ] Normalization is deterministic
 - [ ] Tests pass
+- [ ] Auto-select returns only implemented presets
+- [ ] Explicit placeholder preset returns clear error
 
 ## Implemented presets
 - [ ] orbit-ring-intro has 3D ring structure

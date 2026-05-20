@@ -4,6 +4,7 @@ import type {MultiImageMotionRequest} from '../skill/schema';
 import {getPresetDefinition} from '../presets';
 
 export const MultiImageComposition: React.FC<MultiImageMotionRequest> = (request) => {
+  // Guardrail: normalizeRequest throws for non-renderable presets. No silent slideshow/grid fallback.
   const normalized = normalizeRequest(request);
   const preset = getPresetDefinition(normalized.motion.preset);
   const durationInFrames = Math.round(normalized.output.durationSeconds * normalized.output.fps);

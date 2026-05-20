@@ -6,6 +6,7 @@ An AI-facing Remotion skill for generating creative **multi-image** motion compo
 - Takes 2+ images and a motion preset (or auto-select rules).
 - Produces a designed video sequence with spatial structure, camera motion, staged choreography, and final composition convergence.
 - Uses deterministic defaults and deterministic seed behavior for predictable AI orchestration.
+- v1 runtime availability is intentionally limited to 3 implemented presets.
 
 ## What this skill does not do
 - OCR or text extraction from images.
@@ -52,7 +53,7 @@ npm run render:helix
 ```
 
 Notes:
-- Example files use `/sample/image-xx.jpg` placeholders. Replace them with real files in Remotion `public/sample/` (or remote URLs).
+- Example files use `/sample/image-xx.png` placeholders. Replace them with real files in Remotion `public/sample/` (or remote URLs).
 - Current scripts pass JSON file path through `--props`. If your Remotion CLI requires raw JSON, use:
   - `remotion render src/index.ts Image2RemotionSkill out/test.mp4 --props="$(cat examples/request-orbit-ring.json)"`
 
@@ -74,18 +75,20 @@ Notes:
 - `helix-tunnel`
 
 ## Implemented Presets
+These are the only presets that are renderable in v1:
 - `orbit-ring-intro`
 - `gallery-corridor`
 - `helix-tunnel`
 
 ## Placeholder Presets
+These are preset-contract placeholders in v1 and are intentionally **not renderable**:
 - `drop-flip-intro`
 - `rotary-fan-intro`
 - `magnetic-grid-intro`
 - `coverflow-focus`
 - `page-flip-gallery`
 
-Each placeholder explicitly renders: `Placeholder preset - motionSpec implemented, animation pending.`
+If an explicit placeholder preset is requested, the skill returns a clear error instead of rendering a fallback demo.
 
 ## Test
 ```bash

@@ -8,6 +8,7 @@ import {
   DEFAULT_RENDER,
   DEFAULT_THEME
 } from './defaults';
+import {assertRenderablePreset} from '../presets';
 import {selectPreset} from './selectPreset';
 import type {MultiImageMotionRequest, NormalizedMultiImageMotionRequest} from './schema';
 import {validateRequest} from './validateRequest';
@@ -38,6 +39,7 @@ export const normalizeRequest = (
         imageHoldSeconds
       }
     });
+  assertRenderablePreset(preset);
 
   const finalComposition =
     request.motion.finalComposition ?? DEFAULT_FINAL_COMPOSITION_BY_USE_CASE[useCase];

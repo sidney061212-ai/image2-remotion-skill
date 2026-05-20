@@ -8,6 +8,8 @@ Normalize defaults.
 
 Step 3:
 Select preset.
+- Auto-select only from implemented presets.
+- Reject explicit placeholder presets with a clear error.
 
 Step 4:
 Generate motion plan.

@@ -66,4 +66,13 @@ describe('normalizeRequest', () => {
 
     expect(first).toEqual(second);
   });
+
+  test('explicit placeholder preset returns clear error', () => {
+    const request = baseRequest();
+    request.motion.preset = 'rotary-fan-intro';
+
+    expect(() => normalizeRequest(request)).toThrow(
+      "Preset 'rotary-fan-intro' is a preset contract placeholder in v1 and cannot be rendered yet."
+    );
+  });
 });

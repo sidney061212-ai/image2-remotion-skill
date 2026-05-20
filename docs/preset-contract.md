@@ -13,6 +13,8 @@ A preset is not accepted if it only fades, slides, shuffles, or displays a stati
 
 Contract source type:
 - `src/presets/types.ts` (`MultiImagePresetDefinition`)
+- `implementationStatus` supports: `implemented`, `placeholder`, `experimental`
+- `isRenderable` must explicitly declare runtime renderability
 
 Registry:
 - `src/presets/index.ts`

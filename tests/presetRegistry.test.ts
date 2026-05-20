@@ -32,6 +32,14 @@ describe('presetRegistry', () => {
     expect(implemented).toEqual(['gallery-corridor', 'helix-tunnel', 'orbit-ring-intro']);
   });
 
+  test('implemented presets are exactly 3', () => {
+    const implementedCount = Object.values(presetRegistry).filter(
+      (preset) => preset.implementationStatus === 'implemented'
+    ).length;
+
+    expect(implementedCount).toBe(3);
+  });
+
   test('placeholder presets are marked placeholder', () => {
     const placeholders = Object.values(presetRegistry)
       .filter((preset) => preset.implementationStatus === 'placeholder')
@@ -45,6 +53,20 @@ describe('presetRegistry', () => {
       'page-flip-gallery',
       'rotary-fan-intro'
     ]);
+  });
+
+  test('placeholder presets are marked non-renderable', () => {
+    Object.values(presetRegistry)
+      .filter((preset) => preset.implementationStatus === 'placeholder')
+      .forEach((preset) => {
+        expect(preset.isRenderable).toBe(false);
+      });
+  });
+
+  test('status value is from implemented/placeholder/experimental', () => {
+    Object.values(presetRegistry).forEach((preset) => {
+      expect(['implemented', 'placeholder', 'experimental']).toContain(preset.implementationStatus);
+    });
   });
 
   test('getPresetDefinition throws on invalid id', () => {
