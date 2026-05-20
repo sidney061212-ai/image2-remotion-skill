@@ -29,7 +29,7 @@ export type FinalComposition = (typeof FINAL_COMPOSITIONS)[number];
 
 export const THEME_MOODS = ['cinematic', 'tech', 'luxury', 'playful', 'minimal'] as const;
 
-export const THEME_BACKGROUNDS = ['dark-gradient', 'light-clean', 'glass', 'deep-space', 'paper'] as const;
+export const THEME_BACKGROUNDS = ['black', 'transparent'] as const;
 
 export const THEME_FRAME_STYLES = ['none', 'thin-border', 'glass-card', 'polaroid', 'poster'] as const;
 
@@ -61,7 +61,7 @@ export interface MultiImageMotionRequest {
   };
   theme?: {
     mood?: 'cinematic' | 'tech' | 'luxury' | 'playful' | 'minimal';
-    background?: 'dark-gradient' | 'light-clean' | 'glass' | 'deep-space' | 'paper';
+    background?: 'black' | 'transparent';
     frameStyle?: 'none' | 'thin-border' | 'glass-card' | 'polaroid' | 'poster';
   };
   render?: {
@@ -87,7 +87,7 @@ export interface NormalizedMultiImageMotionRequest extends MultiImageMotionReque
   };
   theme: {
     mood: 'cinematic' | 'tech' | 'luxury' | 'playful' | 'minimal';
-    background: 'dark-gradient' | 'light-clean' | 'glass' | 'deep-space' | 'paper';
+    background: 'black' | 'transparent';
     frameStyle: 'none' | 'thin-border' | 'glass-card' | 'polaroid' | 'poster';
   };
   render: {
@@ -114,4 +114,10 @@ export const isIntensity = (value: string): value is MotionIntensity => {
 
 export const isFinalComposition = (value: string): value is FinalComposition => {
   return (FINAL_COMPOSITIONS as readonly string[]).includes(value);
+};
+
+export const isThemeBackground = (
+  value: string
+): value is NormalizedMultiImageMotionRequest['theme']['background'] => {
+  return (THEME_BACKGROUNDS as readonly string[]).includes(value);
 };

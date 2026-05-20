@@ -11,9 +11,6 @@ const defaultRequest: MultiImageMotionRequest = {
   },
   motion: {
     useCase: 'intro'
-  },
-  text: {
-    title: 'Image2 Remotion Skill'
   }
 };
 

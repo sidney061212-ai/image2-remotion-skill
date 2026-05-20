@@ -39,7 +39,7 @@ export const DEFAULT_FINAL_COMPOSITION_BY_USE_CASE: Record<MultiImageUseCase, Fi
 
 export const DEFAULT_THEME: NormalizedMultiImageMotionRequest['theme'] = {
   mood: 'cinematic',
-  background: 'dark-gradient',
+  background: 'black',
   frameStyle: 'glass-card'
 };
 

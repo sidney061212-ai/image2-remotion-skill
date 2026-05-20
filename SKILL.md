@@ -42,6 +42,7 @@ Output is a deterministic `NormalizedMultiImageMotionRequest` plus a Remotion co
   - `gallery-corridor`
   - `helix-tunnel`
 - The other 5 presets are contract placeholders and are not renderable in v1.
+- Theme background is constrained to `black` or `transparent`.
 
 ## Preset selection rules
 1. If `motion.preset` is provided, use it directly.
@@ -67,12 +68,13 @@ Output is a deterministic `NormalizedMultiImageMotionRequest` plus a Remotion co
 7. Do not infer image semantic category.
 8. Do not choose presets based on image content.
 9. Do not fallback to static grids/slideshows/shuffle demos.
-10. Every preset must define: spatial structure, entrance choreography, camera path, sequencing, transition, final composition.
-11. Motion must be frame-driven through Remotion primitives.
-12. Deterministic output required when `seed` is provided.
-13. Preset selection only depends on allowed metadata.
-14. Preset selection must not depend on image visual content.
-15. AI-facing errors must be explicit and actionable.
+10. Do not use backgrounds outside `black` and `transparent`.
+11. Every preset must define: spatial structure, entrance choreography, camera path, sequencing, transition, final composition.
+12. Motion must be frame-driven through Remotion primitives.
+13. Deterministic output required when `seed` is provided.
+14. Preset selection only depends on allowed metadata.
+15. Preset selection must not depend on image visual content.
+16. AI-facing errors must be explicit and actionable.
 
 ## Error handling
 - Invalid version: throw clear version error.

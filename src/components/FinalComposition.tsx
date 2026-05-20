@@ -154,30 +154,34 @@ export const FinalComposition: React.FC<FinalCompositionProps> = ({
   };
 
   const renderTitleCenter = () => {
+    const hasCenterText = Boolean(text?.title || text?.subtitle);
+
     return (
       <>
         {renderOrbit()}
-        <div
-          style={{
-            position: 'absolute',
-            left: '50%',
-            top: '50%',
-            transform: `translate(-50%, -50%) scale(${interpolate(p, [0, 1], [0.9, 1])})`,
-            textAlign: 'center',
-            color: '#f8fafc',
-            width: Math.min(width * 0.7, 920),
-            opacity: baseOpacity
-          }}
-        >
-          <SafeText
-            value={text?.title ?? 'Final Composition'}
-            style={{fontSize: Math.round(width * 0.05), fontWeight: 700, letterSpacing: 1.2}}
-          />
-          <SafeText
-            value={text?.subtitle}
-            style={{fontSize: Math.round(width * 0.024), marginTop: 18, opacity: 0.82}}
-          />
-        </div>
+        {hasCenterText ? (
+          <div
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              transform: `translate(-50%, -50%) scale(${interpolate(p, [0, 1], [0.9, 1])})`,
+              textAlign: 'center',
+              color: '#f8fafc',
+              width: Math.min(width * 0.7, 920),
+              opacity: baseOpacity
+            }}
+          >
+            <SafeText
+              value={text?.title}
+              style={{fontSize: Math.round(width * 0.05), fontWeight: 700, letterSpacing: 1.2}}
+            />
+            <SafeText
+              value={text?.subtitle}
+              style={{fontSize: Math.round(width * 0.024), marginTop: 18, opacity: 0.82}}
+            />
+          </div>
+        ) : null}
       </>
     );
   };

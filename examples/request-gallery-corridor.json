@@ -22,9 +22,6 @@
     "imageHoldSeconds": 2.5,
     "finalComposition": "main-focus"
   },
-  "text": {
-    "title": "Immersive Gallery"
-  },
   "render": {
     "seed": 13
   }
