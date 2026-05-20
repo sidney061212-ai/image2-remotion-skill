@@ -1,0 +1,36 @@
+{
+  "name": "image2-remotion-skill",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-facing Remotion skill for creative multi-image motion compositions.",
+  "type": "module",
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "build": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "render:orbit": "remotion render src/index.ts Image2RemotionSkill out/orbit-ring.mp4 --props=examples/request-orbit-ring.json",
+    "render:corridor": "remotion render src/index.ts Image2RemotionSkill out/gallery-corridor.mp4 --props=examples/request-gallery-corridor.json",
+    "render:helix": "remotion render src/index.ts Image2RemotionSkill out/helix-tunnel.mp4 --props=examples/request-helix-tunnel.json"
+  },
+  "keywords": [
+    "remotion",
+    "skill",
+    "ai",
+    "motion-design"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.463"
+  },
+  "devDependencies": {
+    "@remotion/cli": "^4.0.463",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}
