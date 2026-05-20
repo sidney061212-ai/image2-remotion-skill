@@ -40,20 +40,20 @@ export const FinalComposition: React.FC<FinalCompositionProps> = ({
   }
 
   const baseOpacity = interpolate(p, [0, 1], [0, 1]);
-  const cardWidth = Math.min(width, height) * 0.24;
+  const cardWidth = Math.min(width, height) * 0.28;
   const cardHeight = cardWidth * 0.66;
   const previewAssets = assets.slice(0, 12);
 
   const renderGrid = () => {
-    const positions = distributeGrid(previewAssets.length, width * 0.78, height * 0.66, 4);
+    const positions = distributeGrid(previewAssets.length, width * 0.9, height * 0.78, 4);
     return previewAssets.map((asset, index) => {
       const pos = positions[index];
       return (
         <MotionImage
           key={`${asset.path}-${index}`}
           asset={asset}
-          cardWidth={cardWidth * 0.8}
-          cardHeight={cardHeight * 0.8}
+          cardWidth={cardWidth * 0.82}
+          cardHeight={cardHeight * 0.82}
           x={pos.x}
           y={pos.y}
           z={0}
@@ -66,7 +66,7 @@ export const FinalComposition: React.FC<FinalCompositionProps> = ({
   };
 
   const renderOrbit = () => {
-    const radius = Math.min(width, height) * 0.3;
+    const radius = Math.min(width, height) * 0.24;
     const positions = distributeOnCircle(previewAssets.length, radius, seed + 99);
 
     return previewAssets.map((asset, index) => {
@@ -75,11 +75,11 @@ export const FinalComposition: React.FC<FinalCompositionProps> = ({
         <MotionImage
           key={`${asset.path}-${index}`}
           asset={asset}
-          cardWidth={cardWidth * 0.74}
-          cardHeight={cardHeight * 0.74}
+          cardWidth={cardWidth * 0.86}
+          cardHeight={cardHeight * 0.86}
           x={pos.x}
           y={pos.y}
-          z={pos.z * 0.45}
+          z={pos.z * 0.36}
           rotateY={pos.rotateY}
           scale={interpolate(p, [0, 1], [0.9, 1])}
           frameStyle={theme.frameStyle}
@@ -122,7 +122,7 @@ export const FinalComposition: React.FC<FinalCompositionProps> = ({
             cardWidth={cardWidth * 1.4}
             cardHeight={cardHeight * 1.4}
             x={0}
-            y={-20}
+            y={-8}
             z={40}
             scale={interpolate(p, [0, 1], [0.9, 1])}
             frameStyle={theme.frameStyle}
@@ -141,7 +141,7 @@ export const FinalComposition: React.FC<FinalCompositionProps> = ({
               cardWidth={cardWidth * 0.6}
               cardHeight={cardHeight * 0.6}
               x={direction * (cardWidth * 0.95)}
-              y={-140 + layer * 110}
+              y={-120 + layer * 96}
               z={-layer * 10}
               scale={interpolate(p, [0, 1], [0.85, 1])}
               frameStyle={theme.frameStyle}
@@ -158,7 +158,7 @@ export const FinalComposition: React.FC<FinalCompositionProps> = ({
 
     return (
       <>
-        {renderOrbit()}
+        {hasCenterText ? renderOrbit() : renderMainFocus()}
         {hasCenterText ? (
           <div
             style={{

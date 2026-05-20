@@ -23,21 +23,21 @@ export const HelixTunnel: React.FC<MultiImagePresetProps> = ({
   const {durationInFrames} = useVideoConfig();
 
   const intensityFactor = intensity === 'high' ? 1.26 : intensity === 'low' ? 0.85 : 1;
-  const radius = Math.min(width, height) * (intensity === 'high' ? 0.36 : 0.32);
-  const depthSpacing = Math.min(width, height) * (intensity === 'high' ? 0.46 : 0.38);
+  const radius = Math.min(width, height) * (intensity === 'high' ? 0.38 : 0.34);
+  const depthSpacing = Math.min(width, height) * (intensity === 'high' ? 0.42 : 0.35);
   const positions = distributeHelix(assets.length, radius, depthSpacing, seed + 57);
 
-  const finalStart = Math.floor(durationInFrames * 0.79);
+  const finalStart = Math.floor(durationInFrames * 0.86);
   const finalProgress = phaseProgress(frame, finalStart, durationInFrames - 1);
 
   const travelProgress = phaseProgress(frame, 0, Math.floor(durationInFrames * 0.86));
-  const travelCurve = interpolate(travelProgress, [0, 0.45, 0.78, 1], [0, 0.34, 0.9, 1], {
+  const travelCurve = interpolate(travelProgress, [0, 0.34, 0.76, 1], [0, 0.22, 0.92, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp'
   });
   const speedBurst = Math.sin(phaseProgress(frame, Math.floor(durationInFrames * 0.3), Math.floor(durationInFrames * 0.74)) * Math.PI);
 
-  const cameraZ = interpolate(travelCurve, [0, 1], [-420, depthSpacing * assets.length * 1.04], {
+  const cameraZ = interpolate(travelCurve, [0, 1], [-680, depthSpacing * assets.length * 1.12], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp'
   });
@@ -47,19 +47,19 @@ export const HelixTunnel: React.FC<MultiImagePresetProps> = ({
       extrapolateRight: 'clamp'
     });
 
-  const helixSpin = interpolate(travelProgress, [0, 0.45, 0.82, 1], [0, 120, 380 * intensityFactor, 460 * intensityFactor], {
+  const helixSpin = interpolate(travelProgress, [0, 0.42, 0.82, 1], [0, 100, 420 * intensityFactor, 520 * intensityFactor], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp'
   });
 
-  const cardWidth = Math.min(width, height) * 0.205;
+  const cardWidth = Math.min(width, height) * 0.25;
   const cardHeight = cardWidth * 0.66;
 
   return (
     <PerspectiveStage
       background={theme.background}
       cameraTransform={`translate3d(0px, 0px, ${cameraZ}px) rotateZ(${cameraRoll}deg)`}
-      overlayOpacity={interpolate(finalProgress, [0, 1], [0.1, 0.48])}
+      overlayOpacity={interpolate(finalProgress, [0, 1], [0.04, 0.18])}
     >
       <div
         style={{
@@ -77,14 +77,14 @@ export const HelixTunnel: React.FC<MultiImagePresetProps> = ({
             relativeZ,
             depthSpacing * 0.85,
             -depthSpacing * assets.length * 1.12,
-            0.42,
-            1.42
+            0.5,
+            1.62
           );
           const opacity = depthOpacity(
             relativeZ,
             depthSpacing * 0.85,
             -depthSpacing * assets.length * 1.12,
-            0.14,
+            0.24,
             1
           );
 
@@ -92,13 +92,13 @@ export const HelixTunnel: React.FC<MultiImagePresetProps> = ({
           const blurByDepth = interpolate(
             Math.abs(relativeZ),
             [0, depthSpacing * 0.4, depthSpacing * 2.6],
-            [0, 1.4, 6.4],
+            [0, 1.2, 5.2],
             {
               extrapolateLeft: 'clamp',
               extrapolateRight: 'clamp'
             }
           );
-          const blurPx = Math.min(8, blurByDepth + speedBurst * (1 - focusStrength) * 2.4);
+          const blurPx = Math.min(7, blurByDepth + speedBurst * (1 - focusStrength) * 1.9);
 
           const helicalWaveX = Math.cos((frame + index * 4) * 0.016) * 18;
           const helicalWaveY = Math.sin((frame + index * 6) * 0.03) * 13;
@@ -115,7 +115,7 @@ export const HelixTunnel: React.FC<MultiImagePresetProps> = ({
               rotateX={(position.rotateX ?? 0) + Math.sin((frame + index * 8) * 0.01) * 5}
               rotateY={(position.rotateY ?? 0) + helixSpin * 0.24}
               scale={scale}
-              opacity={opacity * (1 - finalProgress * 0.38)}
+              opacity={opacity * (1 - finalProgress * 0.18)}
               blurPx={blurPx}
               frameStyle={theme.frameStyle}
               shadowStrength={1.05 + speedBurst * 0.26}
@@ -130,14 +130,14 @@ export const HelixTunnel: React.FC<MultiImagePresetProps> = ({
         style={{
           pointerEvents: 'none',
           background:
-            'radial-gradient(circle at 50% 48%, rgba(255,255,255,0.08) 0%, rgba(30,41,59,0.1) 30%, rgba(2,6,23,0.56) 100%)'
+            'radial-gradient(circle at 50% 48%, rgba(255,255,255,0.06) 0%, rgba(30,41,59,0.06) 30%, rgba(2,6,23,0.18) 100%)'
         }}
       />
       <AbsoluteFill
         style={{
           pointerEvents: 'none',
-          opacity: 0.2 + speedBurst * 0.1,
-          background: 'linear-gradient(90deg, rgba(2,6,23,0.62) 0%, rgba(2,6,23,0.04) 22%, rgba(2,6,23,0.04) 78%, rgba(2,6,23,0.62) 100%)'
+          opacity: 0.11 + speedBurst * 0.06,
+          background: 'linear-gradient(90deg, rgba(2,6,23,0.48) 0%, rgba(2,6,23,0.03) 22%, rgba(2,6,23,0.03) 78%, rgba(2,6,23,0.48) 100%)'
         }}
       />
 

@@ -93,7 +93,7 @@ export const MotionImage: React.FC<MotionImageProps> = ({
           inset: 0,
           pointerEvents: 'none',
           background:
-            'linear-gradient(158deg, rgba(255,255,255,0.24) 0%, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0) 62%, rgba(0,0,0,0.2) 100%)'
+            'linear-gradient(158deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.04) 30%, rgba(255,255,255,0) 62%, rgba(0,0,0,0.1) 100%)'
         }}
       />
       <div
